@@ -9,6 +9,8 @@ app = flask.Flask(__name__)
 app.config.from_object(config)
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.line_comment_prefix = '##'
+app.jinja_env.add_extension('jinja2_markdown.MarkdownExtension')
+app.jinja_env.markdowner.set_output_format('html5')
 app.jinja_env.globals.update(
   check_form_fields=util.check_form_fields,
   is_iterable=util.is_iterable,
