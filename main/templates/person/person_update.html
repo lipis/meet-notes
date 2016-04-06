@@ -1,0 +1,36 @@
+# extends 'base.html'
+# import 'macro/forms.html' as forms
+# import 'macro/utils.html' as utils
+
+
+# block content
+  <div class="page-header">
+    <h1>
+      # if person_db.key
+        {{utils.back_link('Back', 'person_view', person_id=person_db.key.id())}}
+      # else
+        {{utils.back_link('Back', 'person_list')}}
+      # endif
+      {{title}}
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <form method="POST" action="." novalidate>
+        {{form.csrf_token}}
+        {{forms.text_field(form.name, autofocus=True)}}
+        {{forms.text_field(form.department)}}
+        {{forms.text_field(form.tags)}}
+        {{forms.textarea_field(form.fact)}}
+        {{forms.date_field(form.timestamp)}}
+        <button type="submit" class="btn btn-primary btn-block btn-loading" {{forms.data_loading_text()}}>
+          # if person_db.key
+            Update
+          # else
+            Create
+          # endif
+        </button>
+      </form>
+    </div>
+  </div>
+# endblock

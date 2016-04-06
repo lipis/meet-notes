@@ -1,0 +1,53 @@
+# extends 'base.html'
+# import 'macro/forms.html' as forms
+# import 'macro/utils.html' as utils
+
+
+# block content
+  <div class="page-header">
+    <div class="pull-right">
+      <a class="btn btn-default" href="{{url_for('person_update')}}" title="Add Person">
+        <fa class="fa fa-plus fa-fw"></fa>
+      </a>
+      <a class="btn btn-primary" href="{{url_for('person_update', person_id=person_db.key.id())}}">
+        <fa class="fa fa-fw fa-pencil"></fa> Edit
+      </a>
+    </div>
+    <h1>
+      {{utils.back_link('Back', 'person_list')}}
+      {{title}}
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <th class="text-nowrap col-xs-1">Name</th>
+            <td class="col-xs-11">{{person_db.name}}</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap col-xs-1">Department</th>
+            <td class="col-xs-11">{{person_db.department}}</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap col-xs-1">Tags</th>
+            <td>
+              # for tag in person_db.tags
+                <span class="label label-default">{{tag}}</span>
+              # endfor
+            </td>
+          </tr>
+          <tr>
+            <th class="text-nowrap col-xs-1">Fact</th>
+            <td class="col-xs-11">{{person_db.fact}}</td>
+          </tr>
+          <tr>
+            <th class="text-nowrap col-xs-1">Timestamp</th>
+            <td class="col-xs-11">{{person_db.timestamp}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+# endblock

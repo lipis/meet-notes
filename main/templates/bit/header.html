@@ -11,6 +11,9 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
+        <li class="{{'active' if html_class == 'person-list'}}">
+          <a href="{{url_for('person_list')}}"><span class="fa fa-fw fa-user-secret"></span> People I’ve met</a>
+        </li>
         # include 'bit/contact_menu.html'
       </ul>
       <ul class="nav navbar-nav navbar-right">

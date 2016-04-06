@@ -1,0 +1,45 @@
+# extends 'base.html'
+# import 'macro/utils.html' as utils
+
+# block head
+  {{utils.prefetch_link(next_url)}}
+# endblock
+
+# block content
+  <div class="page-header">
+    <a class="pull-right btn btn-primary" href="{{url_for('person_update')}}">
+      <fa class="fa fa-plus fa-fw"></fa> Add Person
+    </a>
+    <h1>{{title}}</h1>
+  </div>
+  <div class="table-responsive {{'hide' if not person_dbs|count}}">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr class="text-nowrap">
+          <th class="col-xs-3">{{utils.order_by_link('name', 'Name')}}</th>
+          <th class="col-xs-2">{{utils.order_by_link('department', 'Department')}}</th>
+          <th class="col-xs-2">{{utils.order_by_link('tags', 'Tags')}}</th>
+          <th class="col-xs-4">{{utils.order_by_link('fact', 'Fact')}}</th>
+          <th class="col-xs-1">{{utils.order_by_link('timestamp', 'Timestamp')}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        # for person_db in person_dbs
+          <tr class="row-link" id="{{person_db.key.urlsafe()}}" data-href="{{url_for('person_view', person_id=person_db.key.id())}}">
+            <td>{{person_db.name}}</td>
+            <td>{{person_db.department}}</td>
+            <td>
+              # for tag in person_db.tags
+                <span class="label label-default">{{tag}}</span>
+              # endfor
+            </td>
+            <td>{{person_db.fact}}</td>
+            <td class="text-nowrap">{{person_db.timestamp}}</td>
+          </tr>
+        # endfor
+      </tbody>
+    </table>
+  </div>
+
+  {{utils.next_link(next_url)}}
+# endblock
