@@ -23,10 +23,6 @@
       <table class="table table-bordered table-striped">
         <tbody>
           <tr>
-            <th class="text-nowrap col-xs-1">Name</th>
-            <td class="col-xs-11">{{person_db.name}}</td>
-          </tr>
-          <tr>
             <th class="text-nowrap col-xs-1">Department</th>
             <td class="col-xs-11">{{person_db.department}}</td>
           </tr>
@@ -40,11 +36,13 @@
           </tr>
           <tr>
             <th class="text-nowrap col-xs-1">Fact</th>
-            <td class="col-xs-11">{{person_db.fact}}</td>
+            <td class="col-xs-11">
+              {{utils.render_md(person_db.fact)}}
+            </td>
           </tr>
           <tr>
             <th class="text-nowrap col-xs-1">Timestamp</th>
-            <td class="col-xs-11">{{person_db.timestamp}}</td>
+            <td class="col-xs-11"></td>
           </tr>
         </tbody>
       </table>
