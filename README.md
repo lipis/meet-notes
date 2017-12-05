@@ -1,6 +1,8 @@
 meet-notes
 ==========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lipis/meet-notes.svg)](https://greenkeeper.io/)
+
 > This project is inspired by
 ["How to meet 200 people in 200 days"](https://slackhq.com/how-to-meet-200-people-in-200-days-bd4533699885) and it's based on 
 [gae-init](https://github.com/gae-init/gae-init) using 
